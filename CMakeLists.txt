@@ -4,6 +4,7 @@ project(faceDetectionNTracking)
 set(CMAKE_CXX_STANDARD 14)
 
 file(COPY haarcascade_frontalface_default.xml DESTINATION ${PROJECT_BINARY_DIR})
+file(COPY run.sh DESTINATION ${PROJECT_BINARY_DIR})
 
 # OpenCV
 find_package(OpenCV REQUIRED)
