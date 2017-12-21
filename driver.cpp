@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 
   detector >> frame;
   robot.setFrameWidth(frame.size().width);
+  robot.setFrameHeight(frame.size().height);
   while (true)
     {
       auto start = cv::getCPUTickCount();
@@ -57,7 +58,7 @@ int main(int argc, char **argv)
         {
           cv::rectangle(frame, detector.face(), cv::Scalar(255, 0, 0));
           cv::circle(frame, detector.facePosition(), 30, cv::Scalar(0, 255, 0));
-          robot.Update(detector.facePosition());
+          robot.Update(detector.facePosition(), detector.face().height);
         }
 
       cv::imshow(WINDOW_NAME, frame);
