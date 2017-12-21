@@ -29,7 +29,9 @@ int main(int argc, char **argv)
     exit(1);
   }
 
+#ifdef DEBUG
   cv::namedWindow(WINDOW_NAME, cv::WINDOW_KEEPRATIO | cv::WINDOW_AUTOSIZE);
+#endif
 
   VideoFaceDetector detector(CASCADE_FILE, camera);
   cv::Mat frame;
@@ -61,8 +63,10 @@ int main(int argc, char **argv)
           robot.Update(detector.facePosition(), detector.face().height);
         }
 
+#ifdef DEBUG
       cv::imshow(WINDOW_NAME, frame);
       if (cv::waitKey(28) == 27) break;
+#endif
     }
   return 0;
 }
