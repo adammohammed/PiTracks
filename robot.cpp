@@ -55,6 +55,9 @@ void Robot::Update(cv::Point pos, double roiHeight) {
   int x = (int) pos.x > 0 ? pos.x : frameWidth/2;
   int y = (int) pos.y > 0 ? pos.y : frameHeight/2;
 
+#ifdef DEBUG
+  cout << "["<< minFaceLimit << ", " << maxFaceLimit << "] : " << roiHeight << endl;
+#endif
   if (x < leftLimit){
     Left();
   }else if ( x > rightLimit){
@@ -75,6 +78,6 @@ void Robot::setFrameWidth(const int w){
 }
 void Robot::setFrameHeight(const int h){
   frameHeight = h;
-  minFaceLimit = 0.2 * h;
+  minFaceLimit = 0.3 * h;
   maxFaceLimit = 0.6 * h;
 }
